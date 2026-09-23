@@ -5,98 +5,450 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arif Maulana | Personal Website</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            background: #111;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav .logo span {
+            color: #aaa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #aaa;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 10%;
+            gap: 50px;
+            background: white;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text small {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .hero-text h1 {
+            font-size: 58px;
+            margin: 12px 0;
+            line-height: 1;
+        }
+
+        .hero-text h1 span {
+            color: #777;
+        }
+
+        .hero-text p {
+            color: #666;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 22px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #444;
+        }
+
+        .hero-box {
+            width: 280px;
+            height: 280px;
+            background: #111;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        /* SECTION */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* DATA DIRI */
+        .profile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .info-box h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* HOBI */
+        .hobi {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hobi-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 25px;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .hobi-box .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .hobi-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .hobi-box p {
+            color: #777;
+        }
+
+        /* CARD */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 18px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .card-content p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* FILM */
+        .film-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .film-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .film-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .film-card img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+
+        .film-card div {
+            padding: 16px;
+        }
+
+        .film-card h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .film-card p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* KONTAK */
+        .contact {
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .contact p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            display: inline-block;
+            background: white;
+            color: #111;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #080808;
+            color: #777;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: auto;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .film-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 60px 7%;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .hero-box {
+                width: 220px;
+                height: 220px;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .film-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .film-card img {
+                height: 420px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- NAVBAR -->
     <nav>
-        <div class="logo">ARIF<span>.</span></div>
+        <div class="logo">ARIF<span>.WEB</span></div>
 
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">Tentang</a>
-            <a href="#games">Game</a>
-            <a href="#music">Musik</a>
-            <a href="#movies">Film</a>
-        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#game">Game</a></li>
+            <li><a href="#musik">Musik</a></li>
+            <li><a href="#film">Film</a></li>
+        </ul>
     </nav>
 
 
-    <!-- HOME -->
-    <section id="home" class="hero">
+    <!-- HERO -->
+    <section class="hero" id="home">
 
         <div class="hero-text">
-            <p class="small-text">WELCOME TO MY WEBSITE</p>
+            <small>PERSONAL WEBSITE</small>
 
-            <h1>Arif<br><span>Maulana</span></h1>
+            <h1>
+                Arif<br>
+                <span>Maulana.</span>
+            </h1>
 
-            <p class="description">
-                Halo! Gue Arif. Ini adalah website sederhana
-                yang berisi tentang diri gue, hobi, game,
-                musik, dan film yang gue sukai.
+            <p>
+                Halo, saya Arif Maulana. Saya adalah seorang pelajar
+                yang memiliki hobi bermain game dan mendengarkan musik.
+                Website ini berisi sedikit tentang diri saya dan
+                beberapa hal yang saya sukai.
             </p>
 
-            <a href="#about" class="button">Kenal Gue →</a>
+            <a href="#profil" class="contact-btn">
+                Lihat Profil
+            </a>
         </div>
 
-        <div class="hero-card">
-            <div class="profile-circle">
-                A
-            </div>
-
-            <h2>ARIF MAULANA</h2>
-            <p>Gamer • Music Lover • Movie Enthusiast</p>
+        <div class="hero-box">
+            AM
         </div>
 
     </section>
 
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
+    <!-- PROFIL -->
+    <section id="profil">
 
         <div class="section-title">
-            <p>01 — ABOUT ME</p>
-            <h2>Tentang Gue</h2>
+            <h2>Data Diri</h2>
+            <p>Informasi singkat tentang saya.</p>
         </div>
 
-        <div class="about-container">
+        <div class="profile">
 
-            <div class="about-text">
-                <h3>Hi, I'm Arif 👋</h3>
-
-                <p>
-                    Nama gue <b>Arif Maulana</b>. Gue suka menghabiskan
-                    waktu dengan bermain game dan mendengarkan musik.
-                    Selain itu, gue juga suka menikmati film-film yang
-                    menurut gue menarik.
-                </p>
-
-                <p>
-                    Website ini gue buat sebagai tempat untuk
-                    memperkenalkan diri dan membagikan beberapa
-                    hal yang gue suka.
-                </p>
+            <div class="info-box">
+                <h3>NAMA</h3>
+                <p>Arif Maulana</p>
             </div>
 
-            <div class="info-card">
+            <div class="info-box">
+                <h3>HOBI</h3>
+                <p>Bermain Game</p>
+            </div>
 
-                <div class="info">
-                    <span>Nama</span>
-                    <strong>Arif Maulana</strong>
-                </div>
+            <div class="info-box">
+                <h3>HOBI LAINNYA</h3>
+                <p>Mendengarkan Musik</p>
+            </div>
 
-                <div class="info">
-                    <span>WhatsApp</span>
-                    <strong>081286171391</strong>
-                </div>
-
-                <div class="info">
-                    <span>Hobi</span>
-                    <strong>Gaming & Music</strong>
-                </div>
-
+            <div class="info-box">
+                <h3>KONTAK</h3>
+                <p>081286171391</p>
             </div>
 
         </div>
@@ -104,31 +456,31 @@
     </section>
 
 
-    <!-- HOBBY -->
-    <section class="hobby-section">
+    <!-- HOBI -->
+    <section>
 
         <div class="section-title">
-            <p>02 — MY HOBBIES</p>
-            <h2>Yang Gue Suka</h2>
+            <h2>Hobi</h2>
+            <p>Dua hal yang sering saya lakukan.</p>
         </div>
 
-        <div class="hobby-container">
+        <div class="hobi">
 
-            <div class="hobby-card">
-                <div class="hobby-icon">🎮</div>
-                <h3>Gaming</h3>
+            <div class="hobi-box">
+                <div class="icon">🎮</div>
+                <h3>Playing Games</h3>
                 <p>
-                    Bermain game adalah salah satu cara gue
-                    buat bersantai dan mengisi waktu luang.
+                    Bermain game menjadi salah satu kegiatan
+                    yang saya sukai di waktu luang.
                 </p>
             </div>
 
-            <div class="hobby-card">
-                <div class="hobby-icon">🎧</div>
+            <div class="hobi-box">
+                <div class="icon">🎧</div>
                 <h3>Listening Music</h3>
                 <p>
-                    Gue juga suka mendengarkan musik,
-                    terutama ketika lagi santai atau mengerjakan sesuatu.
+                    Mendengarkan musik menjadi salah satu cara
+                    saya menikmati waktu santai.
                 </p>
             </div>
 
@@ -137,45 +489,45 @@
     </section>
 
 
-    <!-- GAMES -->
-    <section id="games" class="section">
+    <!-- GAME -->
+    <section id="game">
 
         <div class="section-title">
-            <p>03 — MY FAVORITE GAMES</p>
-            <h2>Game Favorit</h2>
+            <h2>Favorite Games</h2>
+            <p>Beberapa game yang saya sukai.</p>
         </div>
 
         <div class="cards">
 
-            <div class="game-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlFDK4Wdn0MCeZFATGRc2mC4qdw5laLYsyiBU5vnljzbvow8DuNPDkA78&s=10">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlFDK4Wdn0MCeZFATGRc2mC4qdw5laLYsyiBU5vnljzbvow8DuNPDkA78&s=10"
+                     alt="Pro Evolution Soccer">
 
                 <div class="card-content">
-                    <span>FOOTBALL</span>
                     <h3>Pro Evolution Soccer</h3>
-                    <p>Game sepak bola favorit gue.</p>
+                    <p>Football Game</p>
                 </div>
             </div>
 
 
-            <div class="game-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpybDr7hLJA6c5cA4K8FdKW_rgMg-A9D-b3UpLp4Kpz2zgp3UIDvN3rlA&s=10">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpybDr7hLJA6c5cA4K8FdKW_rgMg-A9D-b3UpLp4Kpz2zgp3UIDvN3rlA&s=10"
+                     alt="UFC 6">
 
                 <div class="card-content">
-                    <span>FIGHTING</span>
                     <h3>UFC 6</h3>
-                    <p>Game fighting yang gue suka mainkan.</p>
+                    <p>Fighting Game</p>
                 </div>
             </div>
 
 
-            <div class="game-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl5axnmWMQVuHyI0XHprgTvO6DEqJE2g_wrvfesYNvPFnWXr0AnjHlx6mJ&s=10">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl5axnmWMQVuHyI0XHprgTvO6DEqJE2g_wrvfesYNvPFnWXr0AnjHlx6mJ&s=10"
+                     alt="Mobile Legends">
 
                 <div class="card-content">
-                    <span>MOBA</span>
                     <h3>Mobile Legends</h3>
-                    <p>Salah satu game mobile yang sering gue mainkan.</p>
+                    <p>MOBA Game</p>
                 </div>
             </div>
 
@@ -184,42 +536,45 @@
     </section>
 
 
-    <!-- MUSIC -->
-    <section id="music" class="music-section">
+    <!-- MUSIK -->
+    <section id="musik">
 
         <div class="section-title">
-            <p>04 — MY FAVORITE MUSIC</p>
-            <h2>Lagu Favorit</h2>
+            <h2>Favorite Music</h2>
+            <p>Beberapa lagu yang sering saya dengarkan.</p>
         </div>
 
-        <div class="music-grid">
+        <div class="cards">
 
-            <div class="music-card">
-                <img src="https://i.scdn.co/image/ab67616d0000b2733e942e1e018e520daa28141d">
+            <div class="card">
+                <img src="https://i.scdn.co/image/ab67616d0000b2733e942e1e018e520daa28141d"
+                     alt="Sssst - Sore">
 
-                <div>
-                    <span>SORE</span>
+                <div class="card-content">
                     <h3>Sssst...</h3>
+                    <p>Sore</p>
                 </div>
             </div>
 
 
-            <div class="music-card">
-                <img src="https://i.scdn.co/image/ab67616d0000b273535749cdd3ac5452d99289be">
+            <div class="card">
+                <img src="https://i.scdn.co/image/ab67616d0000b273535749cdd3ac5452d99289be"
+                     alt="Waiting - The Adams">
 
-                <div>
-                    <span>THE ADAMS</span>
+                <div class="card-content">
                     <h3>Waiting</h3>
+                    <p>The Adams</p>
                 </div>
             </div>
 
 
-            <div class="music-card">
-                <img src="https://images.genius.com/46d633fdfe4272a22f2adc1a5835498c.1000x1000x1.jpg">
+            <div class="card">
+                <img src="https://images.genius.com/46d633fdfe4272a22f2adc1a5835498c.1000x1000x1.jpg"
+                     alt="Black Summer - The Sigit">
 
-                <div>
-                    <span>THE SIGIT</span>
+                <div class="card-content">
                     <h3>Black Summer</h3>
+                    <p>The S.I.G.I.T</p>
                 </div>
             </div>
 
@@ -228,52 +583,56 @@
     </section>
 
 
-    <!-- MOVIES -->
-    <section id="movies" class="section">
+    <!-- FILM -->
+    <section id="film">
 
         <div class="section-title">
-            <p>05 — MY FAVORITE MOVIES</p>
-            <h2>Film Favorit</h2>
+            <h2>Favorite Films</h2>
+            <p>Film yang saya pilih sebagai favorit.</p>
         </div>
 
-        <div class="movie-grid">
+        <div class="film-cards">
 
-            <div class="movie-card">
-                <img src="https://a.ltrbxd.com/resized/film-poster/6/3/0/5/8/63058-avatar-the-way-of-water-0-230-0-345-crop.jpg?v=cc3269e69d">
+            <div class="film-card">
+                <img src="https://a.ltrbxd.com/resized/film-poster/6/3/0/5/8/63058-avatar-the-way-of-water-0-230-0-345-crop.jpg?v=cc3269e69d"
+                     alt="Avatar The Way of Water">
 
-                <div class="movie-info">
+                <div>
                     <h3>Avatar 2</h3>
-                    <span>2022</span>
+                    <p>2022</p>
                 </div>
             </div>
 
 
-            <div class="movie-card">
-                <img src="https://a.ltrbxd.com/resized/film-poster/6/1/7/4/4/3/617443-dune-part-two-0-230-0-345-crop.jpg?v=cc533700f8">
+            <div class="film-card">
+                <img src="https://a.ltrbxd.com/resized/film-poster/6/1/7/4/4/3/617443-dune-part-two-0-230-0-345-crop.jpg?v=cc533700f8"
+                     alt="Dune Part Two">
 
-                <div class="movie-info">
+                <div>
                     <h3>Dune: Part Two</h3>
-                    <span>2024</span>
+                    <p>2024</p>
                 </div>
             </div>
 
 
-            <div class="movie-card">
-                <img src="https://a.ltrbxd.com/resized/film-poster/1/2/5/5/3/9/4/1255394-the-odyssey-2026-0-600-0-900-crop.jpg?v=1eed046d0c">
+            <div class="film-card">
+                <img src="https://a.ltrbxd.com/resized/film-poster/1/2/5/5/3/9/4/1255394-the-odyssey-2026-0-600-0-900-crop.jpg?v=1eed046d0c"
+                     alt="The Odyssey">
 
-                <div class="movie-info">
+                <div>
                     <h3>The Odyssey</h3>
-                    <span>2026</span>
+                    <p>2026</p>
                 </div>
             </div>
 
 
-            <div class="movie-card">
-                <img src="https://a.ltrbxd.com/resized/film-poster/9/5/8/1/0/0/958100-frankenstein-2025-0-230-0-345-crop.jpg?v=49a1ca2305">
+            <div class="film-card">
+                <img src="https://a.ltrbxd.com/resized/film-poster/9/5/8/1/0/0/958100-frankenstein-2025-0-230-0-345-crop.jpg?v=49a1ca2305"
+                     alt="Frankenstein">
 
-                <div class="movie-info">
+                <div>
                     <h3>Frankenstein</h3>
-                    <span>2025</span>
+                    <p>2025</p>
                 </div>
             </div>
 
@@ -282,27 +641,55 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- KONTAK -->
     <section class="contact">
 
-        <p>LET'S CONNECT</p>
+        <h2>Contact Me</h2>
 
-        <h2>Thanks for<br><span>visiting.</span></h2>
+        <p>
+            Kalau ingin menghubungi saya, bisa melalui nomor berikut.
+        </p>
 
-        <a href="https://wa.me/6281286171391" class="button">
-            WhatsApp Me →
-        </a>
+        <div class="phone">
+            📞 081286171391
+        </div>
 
     </section>
 
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 Arif Maulana. Made with HTML, CSS & JavaScript.</p>
+        © 2026 Arif Maulana. All Rights Reserved.
     </footer>
 
 
-    <script src="script.js"></script>
+    <script>
+        // Efek sederhana saat halaman selesai dimuat
+        window.addEventListener("load", function () {
+            console.log("Website Arif Maulana berhasil dimuat.");
+        });
+
+        // Animasi muncul saat section masuk layar
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+            section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
